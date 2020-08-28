@@ -30,10 +30,10 @@ Before the instructions for Step 2: Set up a virtual device, after Step 1: Set u
  Follow the instructions on https://docs.expo.io/workflow/ios-simulator/
 
 **F. Expo App (For testing the project on a handheld device)**\
-For iOS: Install Expo Client\ 
-https://apps.apple.com/us/app/expo-client/id982107779\
-For Android: Insall Expo\
-https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US
+For iOS: Install Expo Client  
+https://apps.apple.com/us/app/expo-client/id982107779  
+For Android: Insall Expo  
+https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US  
  
 ## Project Installation
 1. Clone this repository
