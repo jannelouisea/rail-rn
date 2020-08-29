@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // Screens
 import SigninScreen from './src/screens/auth/SigninScreen';
@@ -12,7 +13,11 @@ const AuthStack = createStackNavigator();
 
 function RailAuthStack() {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+    >
       <AuthStack.Screen name="Signin" component={SigninScreen}/>
       <AuthStack.Screen name="Signup" component={SignupScreen}/>
       <AuthStack.Screen name="PasswordReset" component={PasswordResetScreen}/>
@@ -22,8 +27,10 @@ function RailAuthStack() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <RailAuthStack />
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <RailAuthStack />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
