@@ -1,21 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+// Screens
+import SigninScreen from './src/screens/auth/SigninScreen';
+import SignupScreen from './src/screens/auth/SignupScreen';
+import PasswordResetScreen from './src/screens/auth/PasswordResetScreen';
+
+const AuthStack = createStackNavigator();
+
+function RailAuthStack() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AuthStack.Navigator>
+      <AuthStack.Screen name="Signin" component={SigninScreen}/>
+      <AuthStack.Screen name="Signup" component={SignupScreen}/>
+      <AuthStack.Screen name="PasswordReset" component={PasswordResetScreen}/>
+    </AuthStack.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <NavigationContainer>
+      <RailAuthStack />
+    </NavigationContainer>
+  );
+}
