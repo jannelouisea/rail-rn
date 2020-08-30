@@ -1,5 +1,6 @@
 const Theme = {
     // Colors
+    RAIL_WHITE: '#FFFFFF',
     RAIL_GREEN: '#009624',
     RAIL_DARK_GREY: '#62727B',
     RAIL_BLACK: '#102027',
