@@ -7,6 +7,7 @@ import Screens from '../../nav/screen.constants';
 // Components
 import AuthHeader from '../../components/auth/AuthHeader';
 import Link from '../../components/common/Link';
+import DismissKeyboard from '../../components/common/DismissKeyboard';
 import { TextInput, Divider, Button, Text } from 'react-native-paper';
 
 const SigninScreen = ({ navigation }) => {
@@ -14,6 +15,7 @@ const SigninScreen = ({ navigation }) => {
     const [password, setPassword] = useState('');
 
     return (
+        <DismissKeyboard>
         <SafeAreaView style={styles.container}>
             <AuthHeader text="Sign In"/>
             <Divider style={styles.divider}/>
@@ -53,6 +55,7 @@ const SigninScreen = ({ navigation }) => {
                 />
             </View>
         </SafeAreaView>
+        </DismissKeyboard>
     );
 };
 
