@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Screens from './src/nav/screen.constants';
 
 // Providers
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -22,9 +23,9 @@ function RailAuthStack() {
         headerShown: false
       }}
     >
-      <AuthStack.Screen name="Signin" component={SigninScreen}/>
-      <AuthStack.Screen name="Signup" component={SignupScreen}/>
-      <AuthStack.Screen name="PasswordReset" component={PasswordResetScreen}/>
+      <AuthStack.Screen name={Screens.AUTH.SIGNIN} component={SigninScreen}/>
+      <AuthStack.Screen name={Screens.AUTH.SIGNUP} component={SignupScreen}/>
+      <AuthStack.Screen name={Screens.AUTH.PASSWORD_RESET} component={PasswordResetScreen}/>
     </AuthStack.Navigator>
   );
 }
