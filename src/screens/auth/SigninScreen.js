@@ -17,7 +17,51 @@ const SigninScreen = ({ navigation }) => {
     return (
         <DismissKeyboard>
         <SafeAreaView style={styles.container}>
-            <AuthHeader text="Sign In"/>
+            <Text style={styles.headerText}>Sign In</Text>
+            <View style={styles.socialContainer}>
+                <Button
+                    style={styles.socialButton}
+                    mode='contained'
+                    icon='google'
+                    uppercase={false}
+                    color={Theme.GOOGLE_COLOR}
+                    onPress={() => console.log("Logging in with Google")}
+               >
+                  Google
+               </Button>
+                <Button
+                    style={styles.socialButton}
+                    mode='contained'
+                    icon='linkedin'
+                    uppercase={false}
+                    color={Theme.LINKEDIN_COLOR}
+                    onPress={() => console.log("Logging in with LinkedIn")}
+               >
+                   LinkedIn
+               </Button>
+            </View>
+            <View style={styles.socialContainer}>
+                <Button
+                    style={styles.socialButton}
+                    mode='contained'
+                    icon='facebook'
+                    uppercase={false}
+                    color={Theme.FACEBOOK_COLOR}
+                    onPress={() => console.log("Logging in with Facebook")}
+                >
+                    Facebook
+                </Button>
+                <Button
+                    style={styles.socialButton}
+                    mode='contained'
+                    icon='twitter'
+                    uppercase={false}
+                    color={Theme.TWITTER_COLOR}
+                    onPress={() => console.log("Logging in with Twitter")}
+                >
+                    Twitter
+                </Button>
+            </View>
             <Divider style={styles.divider}/>
             <TextInput
                 style={styles.textInput}
@@ -44,8 +88,9 @@ const SigninScreen = ({ navigation }) => {
                 style={styles.button}
                 mode='contained'
                 onPress={() => console.log("Button was pressed")}
+                uppercase={true}
             >
-                SIGN IN
+                Sign In
             </Button>
             <View style={styles.linkContainer}>
                 <Text>Don&apos;t have an account? </Text>
@@ -59,30 +104,55 @@ const SigninScreen = ({ navigation }) => {
     );
 };
 
+const commonTopBottomMargin = {
+    marginTop: 10,
+    marginBottom: 10
+}
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        padding: 20
+    },
+    headerText: {
+        fontSize: 21,
+        fontWeight: 'bold',
+        color: Theme.RAIL_GREEN,
+        marginBottom: 10
+    },
+    socialContainer: {
+        flexDirection: 'row',
+        width: '100%',
+        paddingLeft: 20,
+        paddingRight: 20,
+        justifyContent: 'space-evenly'
+    },
+    socialButton: {
+        flex: 1,
+        height: 46,
+        justifyContent: 'center'
     },
     divider: {
         backgroundColor: Theme.RAIL_LIGHT_GREY,
         alignSelf: 'stretch',
-        margin: 20
+        ...commonTopBottomMargin
     },
     textInput: {
         height: 46,
         alignSelf: 'stretch',
-        margin: 20,
+        ...commonTopBottomMargin
     },
     button: {
         alignSelf: 'stretch',
-        margin: 20,
         height: 46,
         justifyContent: 'center',
-        borderRadius: 50
+        borderRadius: 50,
+        ...commonTopBottomMargin
     },
     linkContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        ...commonTopBottomMargin
     }
 });
 
