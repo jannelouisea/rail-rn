@@ -6,7 +6,11 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "prettier",
+        "prettier/flowtype",
+        "prettier/react",
+        "prettier/standard"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -17,7 +21,8 @@
     },
     "plugins": [
         "react",
-        "react-native"
+        "react-native",
+        "prettier"
     ],
     "rules": {
         "react-native/no-unused-styles": 2,
@@ -26,5 +31,8 @@
         "react-native/no-color-literals": 2,
         "react-native/no-raw-text": 2,
         "react/prop-types": 0
+    },
+    "scripts": {
+        "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
     }
 }
