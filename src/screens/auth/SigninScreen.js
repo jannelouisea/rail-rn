@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Theme from '../../styles/theme.style';
+import Screens from '../../nav/screen.constants';
 
 // Components
 import AuthHeader from '../../components/auth/AuthHeader';
+import Link from '../../components/common/Link';
 import { TextInput, Divider, Button, Text } from 'react-native-paper';
 
-const SigninScreen = () => {
+const SigninScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -32,12 +34,24 @@ const SigninScreen = () => {
                 autoCapitalize='none'
                 secureTextEntry={true}
             />
+            <Link
+                text='Forgot Password'
+                onPress={() => navigation.navigate(Screens.AUTH.PASSWORD_RESET)}
+            />
             <Button 
                 style={styles.button}
                 mode='contained'
+                onPress={() => console.log("Button was pressed")}
             >
-                <Text style={styles.buttonText}>SIGN IN</Text>
+                SIGN IN
             </Button>
+            <View style={styles.linkContainer}>
+                <Text>Don&apos;t have an account? </Text>
+                <Link 
+                    text='Sign Up here'
+                    onPress={() => navigation.navigate(Screens.AUTH.SIGNUP)}
+                />
+            </View>
         </SafeAreaView>
     );
 };
@@ -64,8 +78,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 50
     },
-    buttonText: {
-        color: Theme.RAIL_WHITE
+    linkContainer: {
+        flexDirection: 'row'
     }
 });
 
