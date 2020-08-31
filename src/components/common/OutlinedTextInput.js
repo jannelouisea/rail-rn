@@ -1,8 +1,9 @@
 import React from 'react'
-import { Stylesheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { TextInput, HelperText } from 'react-native-paper'
+import Theme from '../../styles/theme.style'
 
-const OutlineTextInput = ({
+const OutlinedTextInput = ({
   label,
   value,
   onChangeText,
@@ -10,13 +11,18 @@ const OutlineTextInput = ({
   secureTextEntry = false,
   infoText = '',
   errorText = '',
+  errorCondition = () => false,
 }) => {
+  console.log('Rendering Outline')
+
   const helperTextType = () => {
-    return errorText !== '' ? 'error' : 'info'
+    return errorCondition() && errorText !== '' ? 'error' : 'info'
   }
 
   const isHelperTextVisible = () => {
-    return infoText !== '' || errorText !== '' ? true : false
+    return infoText !== '' || (errorCondition() && errorText !== '')
+      ? true
+      : false
   }
 
   const helperText = () => {
@@ -30,21 +36,36 @@ const OutlineTextInput = ({
   }
 
   return (
-    <View>
+    <>
       <TextInput
+        style={styles.textInput}
+        mode="outlined"
         label={label}
         value={value}
         onChangeText={onChangeText}
         autoCapitalize={autoCapitalize}
         secureTextEntry={secureTextEntry}
+        error={errorCondition()}
       />
-      <HelperText type={helperTextType()} visible={isHelperTextVisible}>
+      <HelperText
+        style={styles.helperText}
+        type={helperTextType()}
+        visible={isHelperTextVisible}>
         {helperText()}
       </HelperText>
-    </View>
+    </>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  textInput: {
+    height: Theme.DEFAULT_ITEM_HEIGHT,
+    width: '100%',
+  },
+  helperText: {
+    fontSize: 12,
+    alignSelf: 'flex-start',
+  },
+})
 
-export default OutlineTextInput
+export default OutlinedTextInput
