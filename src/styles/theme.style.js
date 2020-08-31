@@ -12,7 +12,7 @@ const Theme = {
   FACEBOOK_COLOR: '#4864A4',
   TWITTER_COLOR: '#3CA5CF',
 
-  DEFAULT_ITEM_HEIGHT: 56,
+  DEFAULT_ITEM_HEIGHT: 46,
 }
 
 export default Theme

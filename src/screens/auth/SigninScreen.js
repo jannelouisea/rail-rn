@@ -104,11 +104,13 @@ const commonTopBottomMargin = {
 }
 
 const styles = StyleSheet.create({
+  // This is a common auth style
   container: {
     flex: 1,
     alignItems: 'center',
     padding: 20,
   },
+  // This is a common auth style
   headerText: {
     fontSize: 21,
     fontWeight: 'bold',
