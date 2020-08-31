@@ -5,7 +5,6 @@ import Theme from '../../styles/theme.style'
 import Screens from '../../nav/screen.constants'
 
 // Components
-import AuthHeader from '../../components/auth/AuthHeader'
 import Link from '../../components/common/Link'
 import DismissKeyboard from '../../components/common/DismissKeyboard'
 import { TextInput, Divider, Button, Text } from 'react-native-paper'
