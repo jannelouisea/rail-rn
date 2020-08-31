@@ -13,6 +13,10 @@ const SigninScreen = ({ navigation }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
+  const disableButton = () => {
+    return username.length > 1 && password.length > 1 ? false : true
+  }
+
   return (
     <DismissKeyboard>
       <SafeAreaView style={styles.container}>
@@ -83,7 +87,8 @@ const SigninScreen = ({ navigation }) => {
           style={styles.button}
           mode="contained"
           onPress={() => console.log('Button was pressed')}
-          uppercase={true}>
+          uppercase={true}
+          disabled={disableButton()}>
           Sign In
         </Button>
         <View style={styles.linkContainer}>
