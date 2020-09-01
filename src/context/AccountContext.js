@@ -7,10 +7,10 @@ const ACCOUNT_ACTION_TYPES = {
   SIGNIP: 'signup',
 }
 
-const accountReducer = (state, action) => {
+const accountReducer = (prevState, action) => {
   switch (action.type) {
     default:
-      return state
+      return prevState
   }
 }
 
