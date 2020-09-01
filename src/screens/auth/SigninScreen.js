@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Theme from '../../styles/theme.style'
 import Screens from '../../nav/screen.constants'
+import authStyles from '../../styles/auth/auth.style'
 
 // Components
 import Link from '../../components/common/Link'
@@ -20,13 +21,14 @@ const SigninScreen = ({ navigation }) => {
     return email.length > 1 && password.length > 1 ? false : true
   }
 
+  // TODO: Replace text inputs with OutlinedTextInput
   return (
     <DismissKeyboard>
       <SafeAreaView style={styles.container}>
         <Text style={styles.headerText}>Sign In</Text>
         <View style={styles.socialContainer}>
           <Button
-            style={styles.socialButton}
+            style={styles.googleButton}
             mode="contained"
             icon="google"
             uppercase={false}
@@ -35,7 +37,7 @@ const SigninScreen = ({ navigation }) => {
             Google
           </Button>
           <Button
-            style={styles.socialButton}
+            style={styles.linkedinButton}
             mode="contained"
             icon="linkedin"
             uppercase={false}
@@ -46,7 +48,7 @@ const SigninScreen = ({ navigation }) => {
         </View>
         <View style={styles.socialContainer}>
           <Button
-            style={styles.socialButton}
+            style={styles.facebookButton}
             mode="contained"
             icon="facebook"
             uppercase={false}
@@ -55,12 +57,13 @@ const SigninScreen = ({ navigation }) => {
             Facebook
           </Button>
           <Button
-            style={styles.socialButton}
+            style={styles.twitterButton}
             mode="contained"
             icon="twitter"
             uppercase={false}
             color={Theme.TWITTER_COLOR}
-            onPress={() => console.log('Logging in with Twitter')}>
+            onPress={() => console.log('Logging in with Twitter')}
+            dark={true}>
             Twitter
           </Button>
         </View>
@@ -82,7 +85,9 @@ const SigninScreen = ({ navigation }) => {
           autoCapitalize="none"
           secureTextEntry={true}
         />
-        {state.error !== '' ? <Text>{state.error}</Text> : null}
+        {state.error !== '' ? (
+          <Text style={styles.error}>{state.error}</Text>
+        ) : null}
         <Link
           text="Forgot Password"
           onPress={() => navigation.navigate(Screens.AUTH.PASSWORD_RESET)}
@@ -107,57 +112,72 @@ const SigninScreen = ({ navigation }) => {
   )
 }
 
-const commonTopBottomMargin = {
-  marginTop: 10,
-  marginBottom: 10,
+const socialButtonMargin = 7
+const socialButtonStyle = {
+  flex: 1,
+  height: Theme.DEFAULT_ITEM_HEIGHT,
+  justifyContent: 'center',
 }
 
 const styles = StyleSheet.create({
-  // This is a common auth style
   container: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 20,
+    ...authStyles.container,
   },
-  // This is a common auth style
   headerText: {
-    fontSize: 21,
-    fontWeight: 'bold',
-    color: Theme.RAIL_GREEN,
-    marginBottom: 10,
+    ...authStyles.headerText,
   },
   socialContainer: {
     flexDirection: 'row',
     width: '100%',
-    paddingLeft: 20,
-    paddingRight: 20,
     justifyContent: 'space-evenly',
   },
-  socialButton: {
-    flex: 1,
-    height: 46,
-    justifyContent: 'center',
+  googleButton: {
+    ...socialButtonStyle,
+    marginRight: socialButtonMargin,
+    marginBottom: socialButtonMargin,
+  },
+  linkedinButton: {
+    ...socialButtonStyle,
+    marginLeft: socialButtonMargin,
+    marginBottom: socialButtonMargin,
+  },
+  facebookButton: {
+    ...socialButtonStyle,
+    marginRight: socialButtonMargin,
+    marginTop: socialButtonMargin,
+  },
+  twitterButton: {
+    ...socialButtonStyle,
+    marginLeft: socialButtonMargin,
+    marginTop: socialButtonMargin,
   },
   divider: {
-    backgroundColor: Theme.RAIL_LIGHT_GREY,
+    backgroundColor: Theme.RAIL_DARK_GREY,
     alignSelf: 'stretch',
-    ...commonTopBottomMargin,
+    marginTop: 20,
+    marginBottom: 5,
   },
   textInput: {
-    height: 46,
+    height: Theme.DEFAULT_ITEM_HEIGHT,
     alignSelf: 'stretch',
-    ...commonTopBottomMargin,
+    marginTop: 13,
+    marginBottom: 10,
   },
   button: {
     alignSelf: 'stretch',
-    height: 46,
+    height: Theme.DEFAULT_ITEM_HEIGHT,
     justifyContent: 'center',
     borderRadius: 50,
-    ...commonTopBottomMargin,
+    marginTop: 35,
+    marginBottom: 10,
+  },
+  error: {
+    color: Theme.RAIL_ERROR,
+    marginBottom: 7,
   },
   linkContainer: {
     flexDirection: 'row',
-    ...commonTopBottomMargin,
+    marginTop: 5,
   },
 })
 

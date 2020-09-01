@@ -5,6 +5,7 @@ const Theme = {
   RAIL_DARK_GREY: '#62727B',
   RAIL_BLACK: '#102027',
   RAIL_LIGHT_GREY: '#DFE3E4',
+  RAIL_ERROR: '#B00020',
 
   // Social Media Colors
   GOOGLE_COLOR: '#E04A32',
