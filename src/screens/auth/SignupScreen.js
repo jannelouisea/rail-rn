@@ -19,11 +19,6 @@ const SignupScreen = ({ navigation }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const items = [
-    { label: 'something1', value: 'something1' },
-    { label: 'something2', value: 'something2' },
-  ]
-
   const placeholder = {
     label: 'State',
     value: null,

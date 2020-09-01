@@ -17,5 +17,6 @@ export default (reducer, actions, defaultValue) => {
     )
   }
 
+  // Make notes in here of how this should be used!
   return { Context, Provider }
 }

@@ -4,4 +4,7 @@ export default {
     SIGNUP: 'Signup',
     PASSWORD_RESET: 'PasswordReset',
   },
+  HOME: {
+    LIST: 'HomeList',
+  },
 }
