@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Theme from '../../styles/theme.style'
@@ -9,12 +9,15 @@ import Link from '../../components/common/Link'
 import DismissKeyboard from '../../components/common/DismissKeyboard'
 import { TextInput, Divider, Button, Text } from 'react-native-paper'
 
+import { Context as AccountContext } from '../../context/AccountContext'
+
 const SigninScreen = ({ navigation }) => {
-  const [username, setUsername] = useState('')
+  const { state, signin } = useContext(AccountContext)
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const disableButton = () => {
-    return username.length > 1 && password.length > 1 ? false : true
+    return email.length > 1 && password.length > 1 ? false : true
   }
 
   return (
@@ -66,8 +69,8 @@ const SigninScreen = ({ navigation }) => {
           style={styles.textInput}
           mode="outlined"
           label="Email or Username"
-          value={username}
-          onChangeText={setUsername}
+          value={email}
+          onChangeText={setEmail}
           autoCapitalize="none"
         />
         <TextInput
@@ -79,6 +82,7 @@ const SigninScreen = ({ navigation }) => {
           autoCapitalize="none"
           secureTextEntry={true}
         />
+        {state.error !== '' ? <Text>{state.error}</Text> : null}
         <Link
           text="Forgot Password"
           onPress={() => navigation.navigate(Screens.AUTH.PASSWORD_RESET)}
@@ -86,7 +90,7 @@ const SigninScreen = ({ navigation }) => {
         <Button
           style={styles.button}
           mode="contained"
-          onPress={() => console.log('Button was pressed')}
+          onPress={() => signin({ email, password })}
           uppercase={true}
           disabled={disableButton()}>
           Sign In
