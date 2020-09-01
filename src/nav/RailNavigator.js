@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import { Context as AccountContext } from '../context/AccountContext'
 
@@ -12,9 +13,24 @@ import HomeScreen from '../screens/home/HomeScreen'
 const RailNavigator = () => {
   const { state, restoreToken } = useContext(AccountContext)
 
+  // NOTE: This is only for testing purposes!
+  // TODO: Make sure to delete!
+  const clearAppData = async () => {
+    try {
+      const keys = await AsyncStorage.getAllKeys()
+      await AsyncStorage.multiRemove(keys)
+    } catch (error) {
+      console.error('Error clearing app data.')
+    }
+  }
+  useEffect(() => {
+    clearAppData()
+  }, [])
+
+  // TODO: What happens when cached token is expired??
   useEffect(() => {
     restoreToken()
-  }, [])
+  }, [state.token])
 
   const AuthNavigator = createStackNavigator()
   const MainNavigator = createStackNavigator()

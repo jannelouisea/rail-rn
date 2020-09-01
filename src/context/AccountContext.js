@@ -12,7 +12,9 @@ const ACTION_TYPES = {
 const accountReducer = (state, action) => {
   switch (action.type) {
     case ACTION_TYPES.SIGNUP:
-    case ACTION_TYPES.SIGNUP:
+      return { ...state, token: action.payload, error: '' }
+    case ACTION_TYPES.SIGNIN:
+      return { ...state, token: action.payload, error: '' }
     case ACTION_TYPES.RESTORE_TOKEN:
       return { ...state, token: action.payload, error: '' }
     case ACTION_TYPES.ADD_ERROR:
@@ -42,7 +44,7 @@ const signup = (dispatch) => async (payload) => {
       error: '',
     }*/
 
-    dispatch({ type: ACTION_TYPES.SIGNIP, payload: response.data.accessToken })
+    dispatch({ type: ACTION_TYPES.SIGNUP, payload: response.data.accessToken })
   } catch (err) {
     dispatch({
       type: ACTION_TYPES.ADD_ERROR,
@@ -58,7 +60,7 @@ const signin = (dispatch) => async (payload) => {
     await AsyncStorage.setItem('@token', response.data.accessToken) // TODO: Change this value when connecting with backend
 
     // TODO: Get saved account information in cache??
-    dispatch({ type: ACTION_TYPES.SIGNUP, payload: response.data.accessToken })
+    dispatch({ type: ACTION_TYPES.SIGNIN, payload: response.data.accessToken })
   } catch (err) {
     dispatch({
       type: ACTION_TYPES.ADD_ERROR,

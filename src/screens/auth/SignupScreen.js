@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import DismissKeyboard from '../../components/common/DismissKeyboard'
@@ -8,10 +8,12 @@ import Theme from '../../styles/theme.style'
 import Screens from '../../nav/screen.constants'
 import RNPickerSelect from 'react-native-picker-select'
 import usaStates from '../../assets/data/usaStates'
+import { Context as AccountContext } from '../../context/AccountContext'
 
 import { Button } from 'react-native-paper'
 
 const SignupScreen = ({ navigation }) => {
+  const { state, signup } = useContext(AccountContext)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
@@ -82,7 +84,15 @@ const SignupScreen = ({ navigation }) => {
         <Button
           style={styles.button}
           mode="contained"
-          onPress={() => console.log('Button was pressed')}
+          onPress={() =>
+            signup({
+              name,
+              email,
+              username,
+              usaState,
+              password: confirmPassword,
+            })
+          }
           uppercase={true}
           disabled={disableButton()}>
           Sign Up
