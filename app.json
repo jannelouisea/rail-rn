@@ -16,9 +16,6 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
-    },
-    "web": {
-      "favicon": "./src/assets/favicon.png"
     }
   }
 }
