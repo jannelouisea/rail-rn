@@ -6,6 +6,8 @@ import OutlinedTextInput from '../../components/common/OutlinedTextInput'
 import Link from '../../components/common/Link'
 import Theme from '../../styles/theme.style'
 import Screens from '../../nav/screen.constants'
+import RNPickerSelect from 'react-native-picker-select'
+import usaStates from '../../assets/data/usaStates'
 
 import { Button } from 'react-native-paper'
 
@@ -13,8 +15,20 @@ const SignupScreen = ({ navigation }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
+  const [usaState, setUSAState] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+
+  const items = [
+    { label: 'something1', value: 'something1' },
+    { label: 'something2', value: 'something2' },
+  ]
+
+  const placeholder = {
+    label: 'State',
+    value: null,
+    color: '#9EA0A4',
+  }
 
   const disableButton = () => {
     return name.length > 1 &&
@@ -46,6 +60,13 @@ const SignupScreen = ({ navigation }) => {
           label="Username"
           value={username}
           onChangeText={setUsername}
+        />
+        <RNPickerSelect
+          style={pickerSelectStyles}
+          placeholder={placeholder}
+          items={usaStates}
+          value={usaState}
+          onValueChange={setUSAState}
         />
         <OutlinedTextInput
           label="Password"
@@ -105,6 +126,39 @@ const styles = StyleSheet.create({
   },
   linkContainer: {
     flexDirection: 'row',
+  },
+  selectPicker: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+})
+
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+  inputAndroid: {
+    fontSize: 16,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0.5,
+    borderColor: 'purple',
+    borderRadius: 8,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
   },
 })
 

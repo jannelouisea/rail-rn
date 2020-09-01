@@ -13,8 +13,6 @@ const OutlinedTextInput = ({
   errorText = '',
   errorCondition = () => false,
 }) => {
-  console.log('Rendering Outline')
-
   const helperTextType = () => {
     return errorCondition() && errorText !== '' ? 'error' : 'info'
   }

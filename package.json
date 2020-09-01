@@ -34,7 +34,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-native": "^3.9.1",
-    "prettier": "^2.1.1"
+    "prettier": "^2.1.1",
+    "react-native-picker-select": "^8.0.0"
   },
   "prettier": {
     "jsxBracketSameLine": true,
