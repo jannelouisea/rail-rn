@@ -164,10 +164,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    alignSelf: 'stretch',
-    height: Theme.DEFAULT_ITEM_HEIGHT,
-    justifyContent: 'center',
-    borderRadius: 50,
+    ...authStyles.button,
     marginTop: 35,
     marginBottom: 10,
   },

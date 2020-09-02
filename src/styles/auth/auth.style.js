@@ -12,4 +12,10 @@ export default StyleSheet.create({
     color: Theme.RAIL_GREEN,
     marginBottom: 15,
   },
+  button: {
+    alignSelf: 'stretch',
+    height: Theme.DEFAULT_ITEM_HEIGHT,
+    justifyContent: 'center',
+    borderRadius: 50,
+  },
 })

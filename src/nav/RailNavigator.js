@@ -14,7 +14,8 @@ const RailNavigator = () => {
   const { state, restoreToken } = useContext(AccountContext)
 
   // NOTE: This is only for testing purposes!
-  // TODO: Make sure to delete!
+  // Clearing anything stored in the cache (like token)
+  // TODO: Make sure to delete!!
   const clearAppData = async () => {
     try {
       const keys = await AsyncStorage.getAllKeys()

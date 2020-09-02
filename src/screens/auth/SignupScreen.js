@@ -9,6 +9,7 @@ import Screens from '../../nav/screen.constants'
 import RNPickerSelect from 'react-native-picker-select'
 import usaStates from '../../assets/data/usaStates'
 import { Context as AccountContext } from '../../context/AccountContext'
+import authStyles from '../../styles/auth/auth.style'
 
 import { Button } from 'react-native-paper'
 
@@ -66,6 +67,7 @@ const SignupScreen = ({ navigation }) => {
           onValueChange={setUSAState}
         />
         <OutlinedTextInput
+          style={styles.password}
           label="Password"
           value={password}
           onChangeText={setPassword}
@@ -111,36 +113,21 @@ const SignupScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 20,
+    ...authStyles.container,
   },
   headerText: {
-    fontSize: 21,
-    fontWeight: 'bold',
-    color: Theme.RAIL_GREEN,
-    marginBottom: 10,
+    ...authStyles.headerText,
   },
   button: {
-    alignSelf: 'stretch',
-    height: 46,
-    justifyContent: 'center',
-    borderRadius: 50,
+    ...authStyles.button,
     marginTop: 15,
     marginBottom: 15,
   },
   linkContainer: {
     flexDirection: 'row',
   },
-  selectPicker: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    color: 'black',
-    paddingRight: 30, // to ensure the text is never behind the icon
+  password: {
+    marginBottom: 50,
   },
 })
 
