@@ -37,9 +37,18 @@ https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US
  
 ## Project Installation
 1. Clone this repository
-2. In Rail project directory run `npm install`
+2. Change into the `rail-rn` project directory and run `npm install`
+3. Clone the `rail-rn-json-server` repo
+4. Change into the `rail-rn-json-server` repo and run `npm install`
 
-## Running Project
+## Running Project\
+**Perform these steps before choosing which device to run project on**
+1. In `rail-rn-json-server` repo run `json-server db.json -m ./node_modules/json-server-auth -r routes.json`
+2. Then in another terminal window, change into `rail-rn-json-server` and run `ngrok http 3000`
+3. Copy the first http://...ngrok.io URL (Note, this URL is only valid for 8 hours. After 8 hours you'll have to run `nrgok http 3000` again
+4. In `rail-rn` source code, open up the `src/api/rail.js` file.
+5. Replace the URL in the `baseURL` field with the URL you just copied and save changes to that file.
+
 **On handheld device:**
 1. In Rail project directory run `npm start`
 2. Scan the QR Code from the terminal or the browser-based DevTools UI
