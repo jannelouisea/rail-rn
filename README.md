@@ -41,7 +41,7 @@ https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US
 3. Clone the `rail-rn-json-server` repo
 4. Change into the `rail-rn-json-server` repo and run `npm install`
 
-## Running Project\
+## Running Project
 **Perform these steps before choosing which device to run project on**
 1. In `rail-rn-json-server` repo run `json-server db.json -m ./node_modules/json-server-auth -r routes.json`
 2. Then in another terminal window, change into `rail-rn-json-server` and run `ngrok http 3000`
